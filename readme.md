@@ -2,7 +2,7 @@
 
 Lets expose endpoints in web api and bind to Dapr Zeebe command and workers.
 
-![image](assets/underwriting-tester3.png)
+![image](Assets/underwriting-tester3.png)
 
 ---
 
