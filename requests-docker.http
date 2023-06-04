@@ -1,0 +1,66 @@
+### 
+
+POST http://localhost:6199/v1.0/bindings/zeebe-command
+content-type: application/json
+
+{ 
+  "operation": "create-instance", 
+  "data": {
+    "bpmnProcessId": "UnderwritingTester3", 
+    "version": 11, 
+    "variables": 
+    {
+      "clientId": 11
+    } 
+  } 
+}
+
+### 
+
+POST http://localhost:6199/v1.0/bindings/zeebe-command
+dapr-app-id: client-api
+Content-Type: application/json
+
+{
+  "operation": "set-variables",
+  "data": { 
+    "elementInstanceKey": 2251799813816644, 
+    "variables": { 
+      "wait-message": "no time to wait!" 
+    } 
+  }   
+}   
+
+###
+
+POST http://localhost:6199/v1.0/bindings/zeebe-command
+dapr-app-id: client-api
+Content-Type: application/json
+
+{
+  "operation": "publish-message",
+  "data": { 
+    "messageName": "on-wakeup", 
+    "correlationKey": "10",
+    "variables": { 
+      "wait-message": "no time to wait!" 
+    } 
+  }   
+}   
+
+###
+POST http://localhost:6199/v1.0/bindings/zeebe-command
+dapr-app-id: client-api
+Content-Type: application/json
+
+{
+  "operation": "throw-error",
+  "data": {
+    "errorCode": "WAIT_ERROR",
+    "errorMessage": "Waiting too long for response!", 
+    "jobKey": 2251799813820317
+  },
+  "metadata": {
+    "we-can-test": "but is useless"
+  }   
+} 

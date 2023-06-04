@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAPI", "ClientAPI\ClientAPI.csproj", "{7527ABF2-6A08-4385-84B4-3D947B663D41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{2F2B4E59-222C-45D0-8D60-F989D0133B7E}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+		camunda-demo.env = camunda-demo.env
+		..\camunda-platform\docker-compose-core.yaml = ..\camunda-platform\docker-compose-core.yaml
+		requests-docker.http = requests-docker.http
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{23945E84-9348-4ADB-858F-263D8970E6DC}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{977D676F-9AA6-4FD4-AA87-CAC77DD19596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977D676F-9AA6-4FD4-AA87-CAC77DD19596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977D676F-9AA6-4FD4-AA87-CAC77DD19596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977D676F-9AA6-4FD4-AA87-CAC77DD19596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7527ABF2-6A08-4385-84B4-3D947B663D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7527ABF2-6A08-4385-84B4-3D947B663D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7527ABF2-6A08-4385-84B4-3D947B663D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7527ABF2-6A08-4385-84B4-3D947B663D41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

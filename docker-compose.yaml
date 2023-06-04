@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+
+  client-api:
+    container_name: client-api
+    image: client-api:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./ClientAPI/Dockerfile
+    environment:
+      - NAMESPACE=demo
+    ports:
+      - "5199:80"       # app
+      - "6199:3500"
+      - "61990:50001"
+      - "9999:9090"
+
+  client-api-dapr:
+    container_name: client-api-dapr
+    image: daprio/daprd:1.10.0
+    network_mode: "service:client-api"
+    command: [ "./daprd",
+               "-app-id", "client-api",
+               "-dapr-http-port", "3500",
+               "-dapr-grpc-port", "50001",
+               "-metrics-port", "9090",
+               "-app-port", "80",
+               "-placement-host-address", "dapr-placement:50006",
+               "-components-path", "/components",
+               "-config", "/configuration/dapr-config.yaml"
+    ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+    depends_on:
+      - client-api
+
+  dapr-placement:
+    image: daprio/dapr:1.10.0
+    command: [ "./placement", "-port", "50006", "-log-level", "debug" ]
+    ports:
+      - "50006:50006"
