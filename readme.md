@@ -1,4 +1,4 @@
-# Dapr & Camunda demo
+# Dapr & Zeebe (Camunda) demo
 
 Lets expose endpoints in web api and bind to Dapr Zeebe command and workers.
 
@@ -10,7 +10,7 @@ Lets expose endpoints in web api and bind to Dapr Zeebe command and workers.
 
 Ensure Camunda is running in Docker, skip to section Docker. Upload process model from Camunda Modeler: BPMN/underwriting-tester3.bpmn.
 
-### SELF HOSTED
+### Self hosted
 
 Install Dapr and initialize in local environment: https://docs.dapr.io/getting-started/install-dapr-selfhost/
 
@@ -48,7 +48,7 @@ Ensure worker files in dapr/components folder use host.docker.internal instead o
 
 Depends on how it's run, change host.docker.internal to localhost in dapr/components folder and run in terminal: `dotnet run`. Dapr is automatically attached to the process.
 
-File requests.http contains REST client scripts and is perhaps better. I added a process version for each script as I believe it's a good habit.
+File requests.http contains REST client scripts and is perhaps better. I added a process version for each script as I believe it's a good rule.
 
 Run app first: `dotnet run`
 
