@@ -37,7 +37,7 @@ jobs:
           context: ./ClientAPI
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: robertvejvoda/dapr-zeebe-demo/client-api:$(date +%s), robertvejvoda/dapr-zeebe-demo/client-api:latest 
+          tags: robertvejvoda/dapr-zeebe-demo/client-api:latest 
    
     
       
