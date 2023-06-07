@@ -1,3 +1,5 @@
+[![Docker Image CI](https://github.com/RobertVejvoda/dapr-zeebe-demo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/RobertVejvoda/dapr-zeebe-demo/actions/workflows/docker-image.yml)
+
 # Dapr & Zeebe (Camunda) demo
 
 Lets expose endpoints in web api and bind to Dapr Zeebe command and workers.
