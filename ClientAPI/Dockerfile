@@ -6,7 +6,7 @@ ENV ASPNETCORE_URLS http://*:80
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["ClientAPI/ClientAPI.csproj", "ClientAPI/"]
-RUN dotnet restore "ClientAPI/ClientAPI.csproj"
+RUN dotnet restore "ClientAPI/ClientAPI.csproj" --use-current-runtime  
 COPY . .
 WORKDIR "/src/ClientAPI"
 RUN dotnet build "ClientAPI.csproj" -c Release -o /app/build
