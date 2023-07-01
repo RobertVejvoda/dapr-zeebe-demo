@@ -43,8 +43,8 @@ In fact, only the placement service is needed here, so Dapr can be initialized a
 
 Ensure worker files in dapr/components folder use host.docker.internal instead of localhost. (zeebe-register-worker.yaml and zeebe-wait-here-worker.yaml).
 
-1. Run docker-compose-core.yaml (in Docker folder): `docker compose -f docker-compose-core.yaml up -d`
-2. Run app (in Docker folder): `docker compose -f docker-compose.yaml up --build`
+1. Run Camunda components in camunda-platform folder: docker-compose-core.yaml: `docker compose -f docker-compose-core.yaml up -d`
+2. Run app: `docker compose -f docker-compose.yaml up --build`
 
 ### Tests
 
