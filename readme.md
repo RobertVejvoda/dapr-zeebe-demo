@@ -132,3 +132,32 @@ Return type of the message is passed back to global scope of Camunda variables:
 ```
 result | "Client 3 registered."
 ```
+
+
+### Builds and Deployments (updated on 1.7.2023)
+
+I wanted to use multi-platform builds with GitHub actions, but QEMU emulator for ARM64 images doesn't seem to work properly with dotnet 7 images (and linux distributions)
+After searching sources I found great source: https://devblogs.microsoft.com/dotnet/improving-multiplatform-container-support/ explaining added support for dotnet version 8 (in preview now, based on Alpine image) for multiple platforms for both build and buildx.
+
+Two options:
+
+1. Build, tag and deploy local images:
+
+```
+docker build . -f ClientAPI/Dockerfile -t client-api:linux-amd64 --platform linux/amd64      
+docker build . -f ClientAPI/Dockerfile -t client-api:linux-arm64 --platform linux/arm64 
+
+docker image tag client-api:linux-amd64 docker.io/robertvejvoda/dapr-zeebe-demo:linux-amd64
+docker image push docker.io/robertvejvoda/dapr-zeebe-demo:linux-amd64 
+
+docker image tag client-api:linux-arm64 docker.io/robertvejvoda/dapr-zeebe-demo:linux-arm64
+docker image push docker.io/robertvejvoda/dapr-zeebe-demo:linux-arm64
+```
+
+2. Using buildx - just 1 command:
+
+```
+docker buildx build --pull --push -t docker.io/robertvejvoda/dapr-zeebe-demo -f ./ClientAPI/Dockerfile --platform linux/arm64,linux/arm,linux/amd64 . 
+```
+
+

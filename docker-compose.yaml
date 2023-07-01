@@ -37,7 +37,7 @@ services:
       - client-api
 
   dapr-placement:
-    image: daprio/dapr:1.10.0
+    image: daprio/dapr:1.11.0
     command: [ "./placement", "-port", "50006", "-log-level", "debug" ]
     ports:
       - "50006:50006"
