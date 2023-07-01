@@ -1,20 +1,20 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
-WORKDIR /app
-EXPOSE 80
-ENV ASPNETCORE_URLS http://*:80
-
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+﻿# Learn about building .NET container images:
+# https://github.com/dotnet/dotnet-docker/blob/main/samples/README.md
+FROM mcr.microsoft.com/dotnet/sdk:7.0-bullseye-slim AS build
 WORKDIR /src
-COPY ["ClientAPI/ClientAPI.csproj", "ClientAPI/"]
-RUN dotnet restore "ClientAPI/ClientAPI.csproj" --use-current-runtime  
-COPY . .
-WORKDIR "/src/ClientAPI"
-RUN dotnet build "ClientAPI.csproj" -c Release -o /app/build --use-current-runtime
+EXPOSE 80
 
-FROM build AS publish
-RUN dotnet publish "ClientAPI.csproj" -c Release -o /app/publish --use-current-runtime
+# copy csproj and restore as distinct layers
+COPY "./ClientAPI/ClientAPI.csproj" .
+RUN dotnet restore --use-current-runtime  
 
-FROM base AS final
+# copy everything else and build app
+COPY "./ClientAPI/." .
+RUN dotnet publish -o /app --use-current-runtime --no-self-contained --no-restore 
+
+# final stage/image
+FROM mcr.microsoft.com/dotnet/aspnet:7.0-bullseye-slim
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "ClientAPI.dll"]
+
