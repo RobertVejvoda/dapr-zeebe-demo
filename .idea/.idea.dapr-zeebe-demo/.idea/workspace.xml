@@ -4,15 +4,31 @@
     <projectFile profileName="http">ClientAPI/ClientAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="" />
+    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="665255d7-3afb-4b1e-841a-e105851b1ae1" />
+        <option name="url" value="git@github.com:/RobertVejvoda/dapr-zeebe-demo.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2QhI3dVUzEL8jwNEhN77BFAE5a3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -21,6 +37,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -78,15 +95,53 @@
       <updated>1685799189113</updated>
       <workItem from="1685799190656" duration="144000" />
       <workItem from="1685799461685" duration="547000" />
-      <workItem from="1685800015934" duration="9186000" />
+      <workItem from="1685800015934" duration="10959000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1685891680767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685891680767</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix uppercase character in readme">
+      <created>1685892179248</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685892179248</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updates in readme and renaming.">
+      <created>1685892518547</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685892518547</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="fix uppercase character in readme" />
+    <MESSAGE value="Updates in readme and renaming." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates in readme and renaming." />
   </component>
 </project>
