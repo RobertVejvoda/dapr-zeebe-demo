@@ -9,10 +9,10 @@ COPY ["ClientAPI/ClientAPI.csproj", "ClientAPI/"]
 RUN dotnet restore "ClientAPI/ClientAPI.csproj" --use-current-runtime  
 COPY . .
 WORKDIR "/src/ClientAPI"
-RUN dotnet build "ClientAPI.csproj" -c Release -o /app/build
+RUN dotnet build "ClientAPI.csproj" -c Release -o /app/build --use-current-runtime
 
 FROM build AS publish
-RUN dotnet publish "ClientAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish "ClientAPI.csproj" -c Release -o /app/publish --use-current-runtime
 
 FROM base AS final
 WORKDIR /app

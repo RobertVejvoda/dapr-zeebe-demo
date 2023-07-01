@@ -4,7 +4,10 @@
     <projectFile profileName="http">ClientAPI/ClientAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="" />
+    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientAPI/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI/Dockerfile" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +97,7 @@
       <workItem from="1685799190656" duration="144000" />
       <workItem from="1685799461685" duration="547000" />
       <workItem from="1685800015934" duration="10959000" />
-      <workItem from="1688199073544" duration="604000" />
+      <workItem from="1688199073544" duration="2250000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1685891680767</created>
