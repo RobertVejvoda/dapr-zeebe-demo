@@ -6,7 +6,7 @@ on:
     branches: 
       - net7
     tags:
-      - "v*.*.*"
+      - "*"
   
   pull_request:
     branches:
