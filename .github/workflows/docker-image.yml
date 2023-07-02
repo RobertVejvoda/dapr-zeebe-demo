@@ -1,12 +1,14 @@
 name: Docker Image CI
 
 on:
+  
   push:
     branches: 
       - net7
     tags:
       - "v*.*.*"
-  pull-request:
+  
+  pull_request:
     branches:
       - main
   
