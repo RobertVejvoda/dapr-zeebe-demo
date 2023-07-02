@@ -4,14 +4,18 @@
     <projectFile profileName="http">ClientAPI/ClientAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI/Dockerfile" afterDir="false" />
-    </list>
+    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="Docker builds" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -80,9 +84,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.requests-docker | #1" />
-        <item itemvalue="HTTP Request.requests-docker | #3" />
         <item itemvalue="HTTP Request.requests | #1" />
+        <item itemvalue="HTTP Request.requests-docker | #3" />
+        <item itemvalue="HTTP Request.requests-docker | #1" />
+        <item itemvalue="HTTP Request.requests | #1" />
+        <item itemvalue="HTTP Request.requests-docker | #3" />
       </list>
     </recent_temporary>
   </component>
@@ -120,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685892518547</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Docker builds">
+      <created>1688291910291</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688291910291</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +157,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="fix uppercase character in readme" />
     <MESSAGE value="Updates in readme and renaming." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates in readme and renaming." />
+    <MESSAGE value="new branch for .net8-preview" />
+    <MESSAGE value="Docker builds" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docker builds" />
   </component>
 </project>

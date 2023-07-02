@@ -1,11 +1,17 @@
 name: Docker Image CI
 
 on:
+  
   push:
-    branches: [ "master" ]
+    branches: 
+      - net7
+    tags:
+      - "*"
+  
   pull_request:
-    branches: [ "master" ]
-
+    branches:
+      - main
+  
 jobs:
 
   build:
@@ -15,6 +21,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            docker.io/robertvejvoda/dapr-zeebe-demo
+          # generate Docker tags based on the following events/attributes  
+          tags: |
+            # branch event
+            type=ref,event=branch
+            # tag event
+            type=ref,event=tag
+            # pull request event
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            # disabled if major zero
+            # type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -27,23 +53,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-        with:
-          images: |
-            docker.io/robertvejvoda/dapr-zeebe-demo
-            
+  
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./ClientAPI/Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }} 
-   
-    
-      
+          labels: ${{ steps.meta.outputs.labels }}
