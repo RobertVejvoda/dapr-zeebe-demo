@@ -5,6 +5,7 @@ on:
   push:
     branches: 
       - net7
+      - net8-preview
     tags:
       - "*"
   
