@@ -4,14 +4,21 @@
     <projectFile profileName="http">ClientAPI/ClientAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="">
+    <list default="true" id="cfee56ac-16f1-4347-92f6-5f2e6ac65f9b" name="Changes" comment="new branch for .net8-preview">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-image.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-image.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dapr-zeebe-demo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientAPI/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/ClientAPI/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -80,9 +87,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.requests-docker | #1" />
-        <item itemvalue="HTTP Request.requests-docker | #3" />
         <item itemvalue="HTTP Request.requests | #1" />
+        <item itemvalue="HTTP Request.requests-docker | #3" />
+        <item itemvalue="HTTP Request.requests-docker | #1" />
+        <item itemvalue="HTTP Request.requests | #1" />
+        <item itemvalue="HTTP Request.requests-docker | #3" />
       </list>
     </recent_temporary>
   </component>
@@ -144,6 +153,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="fix uppercase character in readme" />
     <MESSAGE value="Updates in readme and renaming." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates in readme and renaming." />
+    <MESSAGE value="new branch for .net8-preview" />
+    <option name="LAST_COMMIT_MESSAGE" value="new branch for .net8-preview" />
   </component>
 </project>
