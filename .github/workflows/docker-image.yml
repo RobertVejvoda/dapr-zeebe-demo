@@ -31,10 +31,16 @@ jobs:
             docker.io/robertvejvoda/dapr-zeebe-demo
           # generate Docker tags based on the following events/attributes  
           tags: |
+            # branch event
+            type=ref,event=branch
+            # tag event
+            type=ref,event=tag
+            # pull request event
+            type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             # disabled if major zero
-            type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
+            # type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -54,6 +60,6 @@ jobs:
           context: .
           file: ./ClientAPI/Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: ${{ startsWith(github.ref, 'refs/tags/') }}
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
