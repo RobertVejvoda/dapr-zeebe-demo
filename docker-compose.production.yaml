@@ -2,20 +2,19 @@ version: "3.7"
 
 services:
 
+  # build outside like:  docker build -f ./ClientAPI/Dockerfile-alpine-non-root -t client-api:linux-arm64 --platform linux/arm64 .
+  # or use image from local/external registry
   client-api:
     container_name: client-api
-    image: client-api:${TAG:-latest}
-    build:
-      context: .
-      dockerfile: ./ClientAPI/Dockerfile
+    image: client-api:linux-arm64
     environment:
       - NAMESPACE=demo
     ports:
-      - "5199:8080"       # app
+      - "5199:8080"       # rootless, port 8080
       - "6199:3500"
       - "61990:50001"
       - "9999:9090"
-
+  
   client-api-dapr:
     container_name: client-api-dapr
     image: daprio/daprd:1.10.0
@@ -25,7 +24,7 @@ services:
                "-dapr-http-port", "3500",
                "-dapr-grpc-port", "50001",
                "-metrics-port", "9090",
-               "-app-port", "8080",   # app
+               "-app-port", "8080",         # rootless, port 8080
                "-placement-host-address", "dapr-placement:50006",
                "-components-path", "/components",
                "-config", "/configuration/dapr-config.yaml"

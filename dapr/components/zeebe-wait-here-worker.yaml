@@ -1,7 +1,7 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: api/clients/wait-here
+  name: api/clients/on-wait-here
   namespace: demo
 spec:
   type: bindings.zeebe.jobworker

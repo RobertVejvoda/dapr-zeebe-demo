@@ -4,7 +4,7 @@ using System.Net;
 namespace ClientAPI.Controllers;
 
 [ApiController]
-[Route("api/clients")]
+[Route("/api/clients")]
 public class ClientController : ControllerBase
 {
     private readonly ILogger<ClientController> logger;
@@ -14,7 +14,7 @@ public class ClientController : ControllerBase
         this.logger = logger;
     }
 
-    [HttpPost("register")]
+    [HttpPost("on-register")]
     public async Task<ActionResult<ClientResponse>> RegisterClient([FromBody] ClientRequest request)
     {
         await Task.Delay(1000);
@@ -37,7 +37,7 @@ public class ClientController : ControllerBase
         return Created("/", new ClientResponse(message));
     }
 
-    [HttpPost("wait-here")]
+    [HttpPost("on-wait-here")]
     public async Task<ActionResult<NullResponse>> WaitHere()
     {
         logger.LogInformation("Long running job for 10 min., Worker JobKey: {Value}", Request.Headers["X-Zeebe-Job-Key"]!);

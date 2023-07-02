@@ -1,7 +1,7 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: api/clients/register
+  name: api/clients/on-register
   namespace: demo
 spec:
   type: bindings.zeebe.jobworker

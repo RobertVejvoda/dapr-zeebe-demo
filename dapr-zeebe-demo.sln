@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{2F2B4E
 		camunda-demo.env = camunda-demo.env
 		..\camunda-platform\docker-compose-core.yaml = ..\camunda-platform\docker-compose-core.yaml
 		requests.http = requests.http
+		docker-compose.production.yaml = docker-compose.production.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{23945E84-9348-4ADB-858F-263D8970E6DC}"
