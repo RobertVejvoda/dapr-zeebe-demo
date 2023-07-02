@@ -3,12 +3,10 @@ name: Docker Image CI
 on:
   
   push:
+    branches: 
+      - net8-preview
     tags:
       - "*"
-  
-  pull_request:
-    branches:
-      - main
   
 jobs:
 
@@ -56,7 +54,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./ClientAPI/Dockerfile
+          file: ./ClientAPI/Dockerfile-alpine-non-root
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
