@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0m34xz1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.11.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0m34xz1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0">
   <bpmn:process id="UnderwritingTester3" name="Underwriting Tester 3" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:outgoing>Flow_0jzw5eo</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0jzw5eo" sourceRef="StartEvent_1" targetRef="activity_register" />
-    <bpmn:endEvent id="Event_1m74mdu">
-      <bpmn:incoming>Flow_0ti1k4a</bpmn:incoming>
+    <bpmn:endEvent id="Event_1o8d0sq" name="Client registered">
+      <bpmn:incoming>Flow_1hqx0l3</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0n8t0u1" sourceRef="activity_register" targetRef="Activity_076u4gi" />
-    <bpmn:serviceTask id="activity_register" name="Register Client">
-      <bpmn:extensionElements>
-        <zeebe:taskDefinition type="register" retries="1" />
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_0jzw5eo</bpmn:incoming>
-      <bpmn:incoming>Flow_08g7c4m</bpmn:incoming>
-      <bpmn:outgoing>Flow_0n8t0u1</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:startEvent id="Event_0lt6lyu">
-      <bpmn:outgoing>Flow_08g7c4m</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1jk840e" messageRef="Message_03t9em8" />
+    <bpmn:startEvent id="Event_1cr13qu">
+      <bpmn:outgoing>Flow_1e1y3zu</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_08g7c4m" sourceRef="Event_0lt6lyu" targetRef="activity_register" />
-    <bpmn:task id="Activity_076u4gi">
-      <bpmn:incoming>Flow_0n8t0u1</bpmn:incoming>
-      <bpmn:outgoing>Flow_0ti1k4a</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_0ti1k4a" sourceRef="Activity_076u4gi" targetRef="Event_1m74mdu" />
+    <bpmn:serviceTask id="Activity_1uly14i" name="Register Client">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="on-register" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1e1y3zu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jf7cof</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1e1y3zu" sourceRef="Event_1cr13qu" targetRef="Activity_1uly14i" />
+    <bpmn:receiveTask id="Activity_1uxfemj" name="Wait here" messageRef="Message_0ljaam5">
+      <bpmn:incoming>Flow_1jf7cof</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hqx0l3</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="Flow_1hqx0l3" sourceRef="Activity_1uxfemj" targetRef="Event_1o8d0sq" />
+    <bpmn:sequenceFlow id="Flow_1jf7cof" sourceRef="Activity_1uly14i" targetRef="Activity_1uxfemj" />
+    <bpmn:endEvent id="Event_1eacrn0" name="Registration failed due to business error">
+      <bpmn:incoming>Flow_0o5rnx8</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0o5rnx8" sourceRef="Event_1bs09l1" targetRef="Event_1eacrn0" />
+    <bpmn:boundaryEvent id="Event_1bs09l1" name="Error" attachedToRef="Activity_1uxfemj">
+      <bpmn:outgoing>Flow_0o5rnx8</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1yfrfub" errorRef="Error_0eq5ztc" />
+    </bpmn:boundaryEvent>
   </bpmn:process>
   <bpmn:message id="Message_03t9em8" name="on-register-client" />
   <bpmn:message id="Message_0ljaam5" name="on-wait-here">
@@ -34,39 +36,53 @@
       <zeebe:subscription correlationKey="=clientId" />
     </bpmn:extensionElements>
   </bpmn:message>
+  <bpmn:error id="Error_0eq5ztc" name="Business error" errorCode="WAIT_ERROR" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="UnderwritingTester3">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="152" y="82" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_1cr13qu_di" bpmnElement="Event_1cr13qu">
+        <dc:Bounds x="162" y="102" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1m74mdu_di" bpmnElement="Event_1m74mdu">
-        <dc:Bounds x="562" y="82" width="36" height="36" />
+      <bpmndi:BPMNShape id="Activity_1ykxxuk_di" bpmnElement="Activity_1uly14i">
+        <dc:Bounds x="290" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_07dspbf_di" bpmnElement="activity_register">
-        <dc:Bounds x="260" y="60" width="100" height="80" />
+      <bpmndi:BPMNShape id="Event_1o8d0sq_di" bpmnElement="Event_1o8d0sq">
+        <dc:Bounds x="632" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="619" y="73" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xwfop1_di" bpmnElement="Activity_1uxfemj">
+        <dc:Bounds x="470" y="80" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1wfe6ta_di" bpmnElement="Event_0lt6lyu">
-        <dc:Bounds x="292" y="232" width="36" height="36" />
+      <bpmndi:BPMNShape id="Event_1eacrn0_di" bpmnElement="Event_1eacrn0">
+        <dc:Bounds x="632" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="618" y="305" width="70" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_076u4gi_di" bpmnElement="Activity_076u4gi">
-        <dc:Bounds x="410" y="60" width="100" height="80" />
+      <bpmndi:BPMNShape id="Event_1io7n9v_di" bpmnElement="Event_1bs09l1">
+        <dc:Bounds x="552" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="607" y="163" width="25" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_0jzw5eo_di" bpmnElement="Flow_0jzw5eo">
-        <di:waypoint x="188" y="100" />
-        <di:waypoint x="260" y="100" />
+      <bpmndi:BPMNEdge id="Flow_1e1y3zu_di" bpmnElement="Flow_1e1y3zu">
+        <di:waypoint x="198" y="120" />
+        <di:waypoint x="290" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0n8t0u1_di" bpmnElement="Flow_0n8t0u1">
-        <di:waypoint x="360" y="100" />
-        <di:waypoint x="410" y="100" />
+      <bpmndi:BPMNEdge id="Flow_1jf7cof_di" bpmnElement="Flow_1jf7cof">
+        <di:waypoint x="390" y="120" />
+        <di:waypoint x="470" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_08g7c4m_di" bpmnElement="Flow_08g7c4m">
-        <di:waypoint x="310" y="232" />
-        <di:waypoint x="310" y="140" />
+      <bpmndi:BPMNEdge id="Flow_1hqx0l3_di" bpmnElement="Flow_1hqx0l3">
+        <di:waypoint x="570" y="120" />
+        <di:waypoint x="632" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ti1k4a_di" bpmnElement="Flow_0ti1k4a">
-        <di:waypoint x="510" y="100" />
-        <di:waypoint x="562" y="100" />
+      <bpmndi:BPMNEdge id="Flow_0o5rnx8_di" bpmnElement="Flow_0o5rnx8">
+        <di:waypoint x="570" y="178" />
+        <di:waypoint x="570" y="280" />
+        <di:waypoint x="632" y="280" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
