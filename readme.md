@@ -1,4 +1,4 @@
-[![Docker Image CI](https://github.com/RobertVejvoda/dapr-zeebe-demo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/RobertVejvoda/dapr-zeebe-demo/actions/workflows/docker-image.yml)
+[![Docker Image CI NET8-preview](https://github.com/RobertVejvoda/dapr-zeebe-demo/actions/workflows/docker-image-net8-preview.yml/badge.svg)](https://github.com/RobertVejvoda/dapr-zeebe-demo/actions/workflows/docker-image-net8-preview.yml)
 
 # Dapr & Zeebe (Camunda) demo
 
